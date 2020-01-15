@@ -8,8 +8,6 @@ writeMessageInput.addEventListener('keypress', function(e) {
 
 ////////////////////////////////////////////
 function sendMessage() {
-  // TODO: Use server
-  
   let textMessage = getMessage();
   appendMessage(textMessage);
   clearInput();
@@ -26,7 +24,6 @@ function appendMessage(text) {
   let username = document.createElement('div');
   let textMessageElement = document.createElement('p');
   
-
   username.innerHTML = 'Xavi';
   textMessageElement.innerHTML = text;
   
@@ -36,9 +33,15 @@ function appendMessage(text) {
   messageListContainer.append(messageContainer);
   messageContainer.append(username);
   messageContainer.append(textMessageElement);
+
+  // scroll bottom
+  scrollElementToBottom(messageListContainer);
+}
+
+function scrollElementToBottom(element) {
+  element.scrollTop = element.scrollHeight;
 }
 
 function clearInput() {
-
+  document.getElementById('sendMessageInput').value = '';
 }
-////////////////////////////////////////////
