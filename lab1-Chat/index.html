@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link href="./style.css" rel="stylesheet">
   </head>
@@ -27,16 +27,58 @@
       </div>
 
       <div class="chat-list" scrolling="yes">
-        <div class="message">Hola què tal estàs?</div>
-        <div class="message">Hola què tal estàs?</div>
+        <div class="message-container">
+          <div class="message-username">Max</div>
+          <p>
+            Hola què tal estàs?
+          </p>
+        </div>
+        <div class="message-container">
+          <div class="message-username">Me</div>
+          <p>
+            Muy bien, i tu?
+          </p>
+        </div>
+        <div class="message-container">
+          <div class="message-username">Max</div>
+          <p>
+            Hola què tal estàs?
+          </p>
+        </div>
+        <div class="message-container">
+          <div class="message-username">Me</div>
+          <p>
+            Muy bien, i tu?
+          </p>
+        </div>
+        <div class="message-container">
+          <div class="message-username">Max</div>
+          <p>
+            Hola què tal estàs?
+          </p>
+        </div>
+        <div class="message-container">
+          <div class="message-username">Me</div>
+          <p>
+            Muy bien, i tu?
+          </p>
+        </div>
+        <div class="message-container">
+          <div class="message-username">Me</div>
+          <p>
+            Muy bien, i tu?
+          </p>
+        </div>
       </div>
 
-      <div class="chat-form">
-        <input id="sendMessageInput">
-        <button id="sendMessageButton">
-          Send
-        </button>
-      </div>
+      <footer>
+        <form class="chat-form">
+          <input id="sendMessageInput" placeholder="Write a message">
+          <button id="sendMessageButton">
+            Send
+          </button>
+        </form>
+      </footer>
     </div>
     <script src="./code.js"></script>
   </body>
