@@ -26,49 +26,10 @@
         Room 1
       </div>
 
-      <div class="chat-list" scrolling="yes">
-        <div class="message-container">
-          <div class="message-username">Max</div>
-          <p>
-            Hola què tal estàs?
-          </p>
-        </div>
-        <div class="message-container">
-          <div class="message-username">Me</div>
-          <p>
-            Muy bien, i tu?
-          </p>
-        </div>
-        <div class="message-container">
-          <div class="message-username">Max</div>
-          <p>
-            Hola què tal estàs?
-          </p>
-        </div>
-        <div class="message-container">
-          <div class="message-username">Me</div>
-          <p>
-            Muy bien, i tu?
-          </p>
-        </div>
-        <div class="message-container">
-          <div class="message-username">Max</div>
-          <p>
-            Hola què tal estàs?
-          </p>
-        </div>
-        <div class="message-container">
-          <div class="message-username">Me</div>
-          <p>
-            Muy bien, i tu?
-          </p>
-        </div>
-        <div class="message-container">
-          <div class="message-username">Me</div>
-          <p>
-            Muy bien, i tu?
-          </p>
-        </div>
+      <div 
+        class="message-list-container" 
+        id="container-messages" 
+        scrolling="yes">
       </div>
 
       <footer>
@@ -76,8 +37,12 @@
           <input 
             id="sendMessageInput" 
             placeholder="Write a message"
-            autocomplete="off">
-          <button id="sendMessageButton">
+            autocomplete="off"
+            >
+          <button 
+            id="sendMessageButton" 
+            onclick="sendMessage()"
+          >
             Send
           </button>
         </div>

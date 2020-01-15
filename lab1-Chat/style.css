@@ -41,7 +41,7 @@ html {
   padding: 10px;
 }
 
-.chat-list {
+.message-list-container {
   background-color: rgb(226, 120, 120);
   height: 340px;
   overflow-y: scroll; /* Add scrollbar */
@@ -73,7 +73,7 @@ html {
   padding: 5px;
   padding-left: 10px;
   border: 0;
-  width: 90%;
+  width: 85%;
 }
 
 .chat-form button {
