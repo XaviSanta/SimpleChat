@@ -15,6 +15,13 @@ html {
   font-size: 12px;
 }
 
+.header {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1px;
+}
+
 #chat-container {
   min-height: 400px;
   max-width: 500px;
@@ -42,21 +49,29 @@ html {
   hyphens: auto;
 }
 
+
 #chat-form {
   position: absolute;
   bottom: 0;
   min-height: 25px;
-  min-width: 500px;
+  width: 500px;
   background-color: aquamarine;
-  border-radius: 10px;
   text-align: left;
 }
 
-.header {
-  background: #333;
-  color: #fff;
-  text-align: center;
-  padding: 1px;
+#chat-form input {
+  position: absolute;
+  right: 50px;
+  height: 25px;
+  width: 450px;
+  border-radius: 6px;
+}
+
+#chat-form button{
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  border-radius: 6px;
 }
 
 /* 
