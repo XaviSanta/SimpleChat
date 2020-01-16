@@ -1,5 +1,5 @@
 //ref here: https://github.com/websockets/ws/blob/master/doc/ws.md
-var WebSocket = require('./node_modules/ws');
+var WebSocket = require('ws');
 var WebSocketServer = WebSocket.Server;
 
 var fs        = require('fs'),
