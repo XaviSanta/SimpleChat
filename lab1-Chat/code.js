@@ -1,21 +1,13 @@
 // Store The username and room that the user inputs
-var server = new SillyClient();
-var username;
-var my_id;
-var roomNumber;
+
 ////////////////////////////////////////////
 
 function sendLogin() {
   username = document.getElementById('username-input').value; 
   roomName = document.getElementById('room-input').value;
   
-  // TODO: initiate connection with server
-  server.connect('wss://tamats.com:55000', roomName);
-  server.on_ready = function(id) {
-    my_id = id;
-    console.log('Hello, your id is: ' + my_id);
-    username = 'User_'+ my_id;
-  }
+  // initiate connection with server
+  connectToServer();
 
   // Change roomNumber
   let chatTitle = document.getElementById('chat-title')
@@ -30,19 +22,6 @@ writeMessageInput.addEventListener('keypress', function(e) {
     sendMessage(msg);
   }
 });
-
-////////////////////////////////////////////
-function sendMessage(msg) {
-  server.sendMessage(msg);
-  appendMessage(my_id, msg);
-  clearInput();
-}
-
-server.on_message = function(author_id, msg) {
-  console.log(author_id);
-  console.log(msg);
-  appendMessage(author_id, msg);
-}
 
 ////////////////////////////////////////////
 function getMessage() {
