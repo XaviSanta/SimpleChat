@@ -1,3 +1,21 @@
+// Store The username and room that the user inputs
+var username;
+var roomNumber;
+
+////////////////////////////////////////////
+
+function sendLogin() {
+  username = document.getElementById('username-input').value; 
+  roomNumber = document.getElementById('room-input').value;
+  
+  // TODO: initiate connection with server
+  
+  // Enter room:
+  // Change roomNumber
+  let chatTitle = document.getElementById('chat-title')
+  chatTitle.innerHTML = 'Room ' + roomNumber;
+}
+
 ////////////////////////////////////////////
 let writeMessageInput = document.getElementById('sendMessageInput');
 writeMessageInput.addEventListener('keypress', function(e) {
@@ -21,18 +39,18 @@ function getMessage() {
 function appendMessage(text) {
   let messageListContainer = document.getElementById('container-messages');
   let messageContainer = document.createElement('div');
-  let username = document.createElement('div');
-  let textMessageElement = document.createElement('p');
+  let usernameDiv = document.createElement('div');
+  let textMessageP = document.createElement('p');
   
-  username.innerHTML = 'Xavi';
-  textMessageElement.innerHTML = text;
+  usernameDiv.innerHTML = username;
+  textMessageP.innerHTML = text;
   
-  messageContainer.className = 'message-container';
-  username.className = 'message-username';
+  messageContainer.className = 'our message-container';
+  usernameDiv.className = 'message-username';
   
   messageListContainer.append(messageContainer);
-  messageContainer.append(username);
-  messageContainer.append(textMessageElement);
+  messageContainer.append(usernameDiv);
+  messageContainer.append(textMessageP);
 
   // scroll bottom
   scrollElementToBottom(messageListContainer);

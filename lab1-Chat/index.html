@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
+
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link href="./style.css" rel="stylesheet">
   </head>
+
   <body>
       <header class="header">
         <h1 id="h1a">Lab 1 - Chat</h1>
@@ -13,17 +15,31 @@
       <div id="login-form">
         <p>
           Name
-          <input>
+          <input 
+          id="username-input"
+          type="text"
+          required="required"
+          pattern="[A-Za-z0-9]{1,20}"
+          >
+
           Room
-          <input>
-          <button>Enter</button>
+          <input 
+            id="room-input"
+            type="number"
+          >
+          <button 
+            id="login-button" 
+            onclick="sendLogin()"
+          >
+            Enter
+          </button>
         </p>
       </div>
 
-    <!-- -------------------------- -->
+    <!--Chat -------------------------- -->
     <div class="chat-container">
-      <div class="chat-title">
-        Room 1
+      <div class="chat-title" id="chat-title">
+        Room 
       </div>
 
       <div 
@@ -50,4 +66,4 @@
     </div>
     <script src="./code.js"></script>
   </body>
-  </html>
+</html>
