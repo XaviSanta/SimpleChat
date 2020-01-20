@@ -24,6 +24,8 @@ function getMessage() {
 }
 
 function appendMessage(msg) {
+  messageList.push(msg);
+  
   let messageListContainer = document.getElementById('container-messages');
   let messageContainer = document.createElement('div');
   let usernameDiv = document.createElement('div');
