@@ -8,6 +8,9 @@ function sendLogin() {
   // Change roomNumber
   let chatTitle = document.getElementById('chat-title')
   chatTitle.innerHTML = roomName;
+
+  // Clear chat when changing rooms 
+  removeChild('container-messages'); 
 }
 
 ////////////////////////////////////////////
@@ -54,4 +57,12 @@ function scrollElementToBottom(element) {
 
 function clearInput() {
   document.getElementById('sendMessageInput').value = '';
+}
+
+function removeChild(elementId) {
+  let element = document.getElementById(elementId);
+  let child = element.childNodes;
+  child.forEach(c => {
+    element.removeChild(c);
+  });
 }
