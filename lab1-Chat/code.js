@@ -16,7 +16,7 @@ function sendLogin() {
 
 ////////////////////////////////////////////
 let writeMessageInput = document.getElementById('sendMessageInput');
-writeMessageInput.addEventListener('keydown', function(e) {
+writeMessageInput.addEventListener('keypress', function(e) {
   if(e.key === 'Enter') {
     sendMessage();
   }

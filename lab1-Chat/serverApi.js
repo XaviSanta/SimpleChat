@@ -33,6 +33,7 @@ function connectToServer() {
 
 server.on_ready = function(id) {
   my_id = id;
+  document.getElementById('chat-container').style.display = 'block';
 }
 
 server.on_room_info = function(info) {
@@ -55,13 +56,18 @@ function sendMessage() {
     id: my_id,
     username: username,
   }
-
   
   appendMessage(msg);
   server.sendMessage(JSON.stringify(msg));
   clearInput();
 }
 
-// server.on_user_connected = function( user_id ) {
-
-// }
+server.on_user_connected = function( user_id ) {
+  let messageListContainer = document.getElementById('container-messages');
+  let l = document.getElementById('user-list');
+  console.log(messageListContainer);
+  let c = document.createElement('p');
+  c.innerHTML = user_id;
+  l.appendChild(c);
+  console.log(l);
+}
