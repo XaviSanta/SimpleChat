@@ -10,7 +10,8 @@ function sendLogin() {
   chatTitle.innerHTML = roomName;
 
   // Clear chat when changing rooms 
-  removeChild('container-messages'); 
+  removeChilds('container-messages'); 
+  messageList = [];
 }
 
 ////////////////////////////////////////////
@@ -43,9 +44,9 @@ function appendMessage(msg) {
     
   usernameDiv.className = 'message-username';
   
-  messageListContainer.append(messageContainer);
-  messageContainer.append(usernameDiv);
-  messageContainer.append(textMessageP);
+  messageListContainer.appendChild(messageContainer);
+  messageContainer.appendChild(usernameDiv);
+  messageContainer.appendChild(textMessageP);
 
   // scroll bottom
   scrollElementToBottom(messageListContainer);
@@ -59,10 +60,9 @@ function clearInput() {
   document.getElementById('sendMessageInput').value = '';
 }
 
-function removeChild(elementId) {
-  let element = document.getElementById(elementId);
-  let child = element.childNodes;
-  child.forEach(c => {
-    element.removeChild(c);
-  });
+function removeChilds(elementId) {
+  const element = document.getElementById(elementId);
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
 }
