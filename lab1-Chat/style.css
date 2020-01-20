@@ -27,24 +27,22 @@ html {
 }
 
 .chat-container {
-  background: #fff;
-  min-height: 400px;
-  max-width: 500px;
+  display: none;
+  max-width: 800px;
   margin: auto; /* To center in the middle */
   position: relative;
   margin-top: 10px;
+  height: 500px;
 }
 
 .chat-title {
   background-color: rgb(237, 237, 237);
-  min-height: 25px;
-  max-width: 500px;
   padding: 10px;
 }
 
 .message-list-container {
   background-color: rgb(226, 120, 120);
-  height: 340px;
+  height: 100%; 
   overflow-y: scroll; /* Add scrollbar */
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
