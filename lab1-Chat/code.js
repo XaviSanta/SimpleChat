@@ -1,7 +1,3 @@
-// Store The username and room that the user inputs
-
-////////////////////////////////////////////
-
 function sendLogin() {
   username = document.getElementById('username-input').value; 
   roomName = document.getElementById('room-input').value;
@@ -16,10 +12,9 @@ function sendLogin() {
 
 ////////////////////////////////////////////
 let writeMessageInput = document.getElementById('sendMessageInput');
-writeMessageInput.addEventListener('keypress', function(e) {
+writeMessageInput.addEventListener('keydown', function(e) {
   if(e.key === 'Enter') {
-    let msg = getMessage();
-    sendMessage(msg);
+    sendMessage();
   }
 });
 
@@ -28,16 +23,16 @@ function getMessage() {
   return document.getElementById('sendMessageInput').value;
 }
 
-function appendMessage(author_id, text) {
+function appendMessage(msg) {
   let messageListContainer = document.getElementById('container-messages');
   let messageContainer = document.createElement('div');
   let usernameDiv = document.createElement('div');
   let textMessageP = document.createElement('p');
   
-  usernameDiv.innerHTML = author_id;
-  textMessageP.innerHTML = text;
+  usernameDiv.innerHTML = msg.username;
+  textMessageP.innerHTML = msg.text;
   
-  author_id == my_id ? 
+  msg.id === my_id ? 
     messageContainer.className = 'our message-container' :
     messageContainer.className = 'message-container';
     
