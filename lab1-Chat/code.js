@@ -1,20 +1,38 @@
 function sendLogin() {
   username = document.getElementById('username-input').value; 
   roomName = document.getElementById('room-input').value;
-  
-  // initiate connection with server
-  connectToServer();
+  if(validLogin(username, roomName)){
 
-  // Change roomNumber
-  let chatTitle = document.getElementById('chat-title')
-  chatTitle.innerHTML = roomName;
-
-  // Clear chat when changing rooms 
-  removeChilds('container-messages'); 
-  messageList = [];
+    // initiate connection with server
+    connectToServer();
+    
+    // Change roomNumber
+    let chatTitle = document.getElementById('chat-title')
+    chatTitle.innerHTML = 'Room name: ' + roomName;
+    
+    // Clear chat when changing rooms 
+    removeChilds('container-messages'); 
+    messageList = [];
+  }
 }
 
-////////////////////////////////////////////
+let usernameInput = document.getElementById('username-input');
+let roomInput = document.getElementById('room-input');
+usernameInput.addEventListener('keypress', function(e) {
+  if(e.key === 'Enter') {
+    sendLogin();
+  }
+});
+roomInput.addEventListener('keypress', function(e) {
+  if(e.key === 'Enter') {
+    sendLogin();
+  }
+});
+
+function validLogin(username, roomName) {
+  return username !== '' && roomName !== '';
+}
+
 let writeMessageInput = document.getElementById('sendMessageInput');
 writeMessageInput.addEventListener('keypress', function(e) {
   if(e.key === 'Enter') {
@@ -22,7 +40,6 @@ writeMessageInput.addEventListener('keypress', function(e) {
   }
 });
 
-////////////////////////////////////////////
 function getMessage() {
   return document.getElementById('sendMessageInput').value;
 }
@@ -65,4 +82,8 @@ function removeChilds(elementId) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
+}
+
+function setFocusMessageInput(){
+  document.getElementById("sendMessageInput").focus();
 }
