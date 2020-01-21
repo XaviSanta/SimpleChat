@@ -61,8 +61,9 @@ function sendMessage() {
     appendMessage(msg);
     server.sendMessage(JSON.stringify(msg));
     clearInput();
-    setFocusMessageInput();
   }
+  
+  setFocusMessageInput();
 }
 
 server.on_user_connected = function( user_id ) {

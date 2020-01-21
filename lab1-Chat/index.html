@@ -4,8 +4,10 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
-    <link href="./style.css" rel="stylesheet">
+    
+    <script src="https://kit.fontawesome.com/04932c58f4.js" crossorigin="anonymous"></script>
     <script src="./sillyServer/sillyclient.js"></script>
+    <link href="./style.css" rel="stylesheet">
   </head>
 
   <body>
@@ -15,12 +17,14 @@
       
       <div id="login-form">
         <p>
+          <i class="fa fa-user" style="font-size:15px;color:white;"></i>
           <input 
           id="username-input"
           type="text"
           placeholder="User name"
           >
 
+          <i class="fas fa-couch"style="font-size:15px;color:white;"></i>
           <input 
             id="room-input"
             placeholder="Room name"
@@ -29,7 +33,7 @@
             id="login-button" 
             onclick="sendLogin()"
           >
-            Enter
+          Enter <i class="fas fa-sign-in-alt"></i>
           </button>
         </p>
       </div>
@@ -57,7 +61,7 @@
             id="sendMessageButton" 
             onclick="sendMessage()"
           >
-            Send
+          <i class="fas fa-paper-plane"></i>
           </button>
         </div>
       </footer>
