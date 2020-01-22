@@ -52,6 +52,12 @@ html {
   width: 10%;
   min-width: 60px;
 }
+#login-form button:hover {
+  background: rgb(2,0,36);
+  background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(0,164,255,1) 100%);
+  color: white;
+}
+
 .chat-container {
   display: none;
   max-width: 800px;
@@ -92,7 +98,7 @@ html {
   margin-bottom: 7px;
 }
 .message-container:hover {
-  background: rgb(209, 218, 215);
+  background: rgb(237, 237, 237);
   border-color: #333;
   color: black;
 }
@@ -106,6 +112,7 @@ html {
 
 .message-username {
   font-weight: bold;
+  font-size: larger;
 }
 
 .chat-form {
@@ -125,6 +132,10 @@ html {
 }
 
 .chat-form button {
+  background: rgb(2,0,36);
+  background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(0,164,255,1) 100%);
+  color: white;
+  
   border-radius: 15px;
   padding: 5px;
   border: 0;
@@ -132,10 +143,9 @@ html {
   width: 13%;
 }
 
-button:hover {
-  background: rgb(2,0,36);
-  background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(0,164,255,1) 100%);
-  color: white;
+.chat-form button:hover {
+  background: rgb(255, 255, 255);
+  color: black;
 }
 
 

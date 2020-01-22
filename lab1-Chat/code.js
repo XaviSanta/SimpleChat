@@ -8,7 +8,7 @@ function sendLogin() {
     
     // Change roomNumber
     let chatTitle = document.getElementById('chat-title')
-    chatTitle.innerHTML = 'Room name: ' + roomName;
+    chatTitle.innerHTML = 'Room name: ' + roomName.bold();
     
     // Clear chat when changing rooms 
     removeChilds('container-messages'); 
@@ -53,6 +53,7 @@ function appendMessage(msg) {
   let textMessageP = document.createElement('p');
   
   usernameDiv.innerHTML = msg.username;
+  usernameDiv.style.color = getColorById(msg.id);
   textMessageP.innerHTML = msg.text;
   
   msg.id === my_id ? 
@@ -69,6 +70,16 @@ function appendMessage(msg) {
   scrollElementToBottom(messageListContainer);
 }
 
+function getColorById(id) {
+  let i = id.substring(id.length - 1)
+
+  let r = (id*(i+0)*7) % 225 + 30;
+  let g = (id*(i+1)*9) % 225 + 30;
+  let b = (id*(i+2)*11) % 225 + 30;
+
+  console.log(id + ' ' + `rgb(${r},${g},${b})`)
+  return `rgb(${r},${g},${b})`;
+}
 function scrollElementToBottom(element) {
   element.scrollTop = element.scrollHeight;
 }
