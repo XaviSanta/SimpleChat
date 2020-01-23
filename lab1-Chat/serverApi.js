@@ -28,7 +28,7 @@ server.on_message = function(author_id, msg) {
 }
 
 function connectToServer() {
-  server.connect('wss://tamats.com:55000', roomName);
+  server.connect(`${config.serverName}:${config.portNumber}`, roomName);
 }
 
 server.on_ready = function(id) {
@@ -40,10 +40,10 @@ server.on_ready = function(id) {
 server.on_room_info = function(info) {
   let lowestId = Math.min.apply(Math, info.clients);
   if(lowestId != my_id) {
-    let room = info.name;
     let msg = {
       type: 'request',
     }
+
     server.sendMessage(msg, lowestId);
   }
 }

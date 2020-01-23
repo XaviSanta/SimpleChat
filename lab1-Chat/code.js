@@ -6,9 +6,9 @@ function sendLogin() {
     // initiate connection with server
     connectToServer();
     
-    // Change roomNumber
-    let chatTitle = document.getElementById('chat-title')
-    chatTitle.innerHTML = 'Room name: ' + roomName.bold();
+    // Set roomName
+    let chatTitle = document.getElementById('chat-title');
+    chatTitle.innerHTML = 'Room: ' + roomName.bold();
     
     // Clear chat when changing rooms 
     removeChilds('container-messages'); 
@@ -70,16 +70,22 @@ function appendMessage(msg) {
   scrollElementToBottom(messageListContainer);
 }
 
+var colors = [
+  'red',
+  'chocolate',
+  'gold',
+  'fuchsia', 
+  'darkorange', 
+  'lightgreen',
+  'salmon',
+  'yellowGreen',
+  'snow',
+  'tomato'
+] ; 
 function getColorById(id) {
-  let i = id.substring(id.length - 1)
-
-  let r = (id*(i+0)*7) % 225 + 30;
-  let g = (id*(i+1)*9) % 225 + 30;
-  let b = (id*(i+2)*11) % 225 + 30;
-
-  console.log(id + ' ' + `rgb(${r},${g},${b})`)
-  return `rgb(${r},${g},${b})`;
+  return colors[id % colors.length];
 }
+
 function scrollElementToBottom(element) {
   element.scrollTop = element.scrollHeight;
 }
