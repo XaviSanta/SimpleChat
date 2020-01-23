@@ -1,10 +1,13 @@
+var messageList = [];
+var my_id;
+var username;
+var roomName;
+
 function sendLogin() {
   username = document.getElementById('username-input').value; 
   roomName = document.getElementById('room-input').value;
   if(validLogin(username, roomName)){
-
-    // initiate connection with server
-    connectToServer();
+    server.connect(`${config.serverName}:${config.portNumber}`, roomName);
     
     // Set roomName
     let chatTitle = document.getElementById('chat-title');
@@ -39,6 +42,24 @@ writeMessageInput.addEventListener('keypress', function(e) {
     sendMessage();
   }
 });
+
+function sendMessage() {
+  const textMsg = getMessage();
+  if(textMsg !== '') {
+    let msg = {
+      type: 'message',
+      text: textMsg,
+      id: my_id,
+      username: username,
+    }
+  
+    appendMessage(msg);
+    server.sendMessage(JSON.stringify(msg));
+    clearInput();
+  }
+  
+  setFocusMessageInput();
+}
 
 function getMessage() {
   return document.getElementById('sendMessageInput').value;

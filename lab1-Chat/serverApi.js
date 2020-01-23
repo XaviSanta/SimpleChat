@@ -1,9 +1,4 @@
-var messageList = [];
-
 var server = new SillyClient();
-var my_id;
-var username;
-var roomName;
 
 server.on_message = function(author_id, msg) {
   let messageObject = JSON.parse(msg);
@@ -27,10 +22,6 @@ server.on_message = function(author_id, msg) {
   }
 }
 
-function connectToServer() {
-  server.connect(`${config.serverName}:${config.portNumber}`, roomName);
-}
-
 server.on_ready = function(id) {
   my_id = id;
   document.getElementById('chat-container').style.display = 'block';
@@ -46,26 +37,4 @@ server.on_room_info = function(info) {
 
     server.sendMessage(msg, lowestId);
   }
-}
-
-function sendMessage() {
-  const textMsg = getMessage();
-  if(textMsg !== '') {
-    let msg = {
-      type: 'message',
-      text: textMsg,
-      id: my_id,
-      username: username,
-    }
-  
-    appendMessage(msg);
-    server.sendMessage(JSON.stringify(msg));
-    clearInput();
-  }
-  
-  setFocusMessageInput();
-}
-
-server.on_user_connected = function( user_id ) {
-
 }
