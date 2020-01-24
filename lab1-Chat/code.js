@@ -114,7 +114,6 @@ function appendMessage(msg) {
 }
 
 function setNotification(id, action) {
-  console.log(userDict);
   let username = userDict[id].fontcolor(getColorById(id));
   let text = username.bold() + ' has ' + action.fontcolor(getColorById(id)) + ' the room.';
   return {type: 'notification', text: text};

@@ -56,7 +56,6 @@ function processHello(author_id, msg) {
   let id = author_id;
   let username = msg.username;
   userDict[id] = username; // Add new entry to our 'dictionary'
-  console.log(id + '  ' + userDict[id]);
   let hello2 = {
     type: 'hello2',
     username: my_username,
@@ -68,7 +67,7 @@ function processHello(author_id, msg) {
 
 function processHello2(author_id, msg) {
   userDict[author_id] = msg.username;
-  
+
   // Show user has joined the room in the screen
   let n = setNotification(author_id, 'joined');
   appendNotification(n);
@@ -79,8 +78,6 @@ server.on_ready = function(id) {
   document.getElementById('chat-container').style.display = 'block';     // Show chat
   document.getElementById('user-icon').style.color = getColorById(id); // Change icon color
   userDict[id] = my_username;
-  console.log(userDict);
-
   setFocusMessageInput();
 }
 
@@ -117,3 +114,14 @@ server.on_user_disconnected = function (user_id) {
   let n = setNotification(user_id, 'left');
   appendNotification(n);
 }
+
+//this method is called when coulndt connect to the server
+server.on_error = function(err) {
+  alert('An error ocurred. Server returned error');
+  console.table(err);
+};
+
+//this methods is called when the server gets closed (it shutdowns)
+server.on_close = function(){
+  alert('Server is closed');
+};
