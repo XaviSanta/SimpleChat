@@ -18,14 +18,14 @@
       
       <div id="login-form">
         <p>
-          <i class="fa fa-user" style="font-size:15px;color:white;"></i>
+          <i class="fa fa-user" id='user-icon' style="font-size:15px;color:white;"></i>
           <input 
-          id="username-input"
-          type="text"
-          placeholder="User name"
+            id="username-input"
+            type="text"
+            placeholder="User name"
           >
 
-          <i class="fas fa-couch"style="font-size:15px;color:white;"></i>
+          <i class="fas fa-couch" style="font-size:15px;color:white;"></i>
           <input 
             id="room-input"
             placeholder="Room name"
@@ -56,12 +56,10 @@
           <input 
             id="sendMessageInput" 
             placeholder="Write a message"
-            autocomplete="off"
-            >
+            autocomplete="off">
           <button 
             id="sendMessageButton" 
-            onclick="sendMessage()"
-          >
+            onclick="sendMessage()">
           <i class="fas fa-paper-plane"></i>
           </button>
         </div>
