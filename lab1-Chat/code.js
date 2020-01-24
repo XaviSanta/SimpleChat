@@ -83,8 +83,9 @@ function getMessage() {
 }
 
 function appendMessage(msg) {
+  // Add to list of messages
   messageList.push(msg);
-  
+
   // Create the elements to append a message
   let messageListContainer = document.getElementById('container-messages');
   let messageContainer = document.createElement('div');
@@ -112,17 +113,30 @@ function appendMessage(msg) {
   scrollElementToBottom(messageListContainer);
 }
 
-function appendNotification(str) {
+function setNotification(id, action) {
+  console.log(userDict);
+  let username = userDict[id].fontcolor(getColorById(id));
+  let text = username.bold() + ' has ' + action.fontcolor(getColorById(id)) + ' the room.';
+  return {type: 'notification', text: text};
+}
+
+function appendNotification(msg) {
+  // Add to list of messages
+  messageList.push(msg);
+
   // Create element
   let messageListContainer = document.getElementById('container-messages');
   let messageContainer = document.createElement('div');
 
   // Set attributes
   messageContainer.className = 'notification message-container';
-  messageContainer.innerHTML = str;
+  messageContainer.innerHTML = msg.text;
 
   // Append element
   messageListContainer.appendChild(messageContainer);
+
+  // scroll bottom
+  scrollElementToBottom(messageListContainer);
 }
 
 var colors = [

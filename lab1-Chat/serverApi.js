@@ -38,8 +38,18 @@ function processRequest(author_id) {
 // The new user receives the log (list of messages) and add them into the interface
 function processLog(msg) {
   msg.messages.forEach(m => {
-    appendMessage(m);
+    if (m.type === 'message') {
+      appendMessage(m);
+    }
+
+    if (m.type === 'notification') {
+      appendNotification(m)
+    }
   });
+
+  // When all the messages finished, append our message so we know 
+  // in which moment we joined the conversation
+  appendNotification(setNotification(my_id, 'joined'));
 }
 
 function processHello(author_id, msg) {
@@ -57,20 +67,20 @@ function processHello(author_id, msg) {
 }
 
 function processHello2(author_id, msg) {
-  let id = author_id;
-  let username = msg.username;
-  userDict[id] = username; // Add new entry to our 'dictionary'
-
+  userDict[author_id] = msg.username;
+  
   // Show user has joined the room in the screen
-  username = username.fontcolor(getColorById(id));
-  let notification = username.bold() + ' has joined the room.';
-  appendNotification(notification);
+  let n = setNotification(author_id, 'joined');
+  appendNotification(n);
 }
 
 server.on_ready = function(id) {
   my_id = id;
-  document.getElementById('chat-container').style.display = 'block';   // Show chat
+  document.getElementById('chat-container').style.display = 'block';     // Show chat
   document.getElementById('user-icon').style.color = getColorById(id); // Change icon color
+  userDict[id] = my_username;
+  console.log(userDict);
+
   setFocusMessageInput();
 }
 
@@ -84,6 +94,9 @@ server.on_room_info = function(info) {
 
     msg = JSON.stringify(msg);
     server.sendMessage(msg, lowestId);
+  }
+  else {
+    appendNotification(setNotification(my_id, 'joined'));
   }
 }
 
@@ -101,8 +114,6 @@ server.on_user_connected = function (user_id) {
 
 // When user disconnects we want to notify the other ones that this user left the chat
 server.on_user_disconnected = function (user_id) {
-  let username = userDict[user_id];
-  username = username.fontcolor(getColorById(user_id));
-  let notification = username.bold() + ' has left the room.';
-  appendNotification(notification);
+  let n = setNotification(user_id, 'left');
+  appendNotification(n);
 }
