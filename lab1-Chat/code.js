@@ -1,4 +1,5 @@
 var messageList = [];
+var userDict = new Array();
 var my_id;
 var my_username;
 
@@ -109,6 +110,19 @@ function appendMessage(msg) {
 
   // scroll bottom
   scrollElementToBottom(messageListContainer);
+}
+
+function appendNotification(str) {
+  // Create element
+  let messageListContainer = document.getElementById('container-messages');
+  let messageContainer = document.createElement('div');
+
+  // Set attributes
+  messageContainer.className = 'notification message-container';
+  messageContainer.innerHTML = str;
+
+  // Append element
+  messageListContainer.appendChild(messageContainer);
 }
 
 var colors = [

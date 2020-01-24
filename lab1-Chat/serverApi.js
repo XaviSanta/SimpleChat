@@ -13,6 +13,12 @@ server.on_message = function(author_id, msg) {
     case 'log':
       processLog(messageObject);
       break;
+    case 'hello':
+      processHello(author_id, messageObject);
+      break;
+    case 'hello2':
+      processHello2(author_id, messageObject);
+      break;
     default:
       break;
   }
@@ -36,6 +42,31 @@ function processLog(msg) {
   });
 }
 
+function processHello(author_id, msg) {
+  let id = author_id;
+  let username = msg.username;
+  userDict[id] = username; // Add new entry to our 'dictionary'
+  console.log(id + '  ' + userDict[id]);
+  let hello2 = {
+    type: 'hello2',
+    username: my_username,
+  }
+
+  hello2 = JSON.stringify(hello2);
+  server.sendMessage(hello2, id);
+}
+
+function processHello2(author_id, msg) {
+  let id = author_id;
+  let username = msg.username;
+  userDict[id] = username; // Add new entry to our 'dictionary'
+
+  // Show user has joined the room in the screen
+  username = username.fontcolor(getColorById(id));
+  let notification = username.bold() + ' has joined the room.';
+  appendNotification(notification);
+}
+
 server.on_ready = function(id) {
   my_id = id;
   document.getElementById('chat-container').style.display = 'block';   // Show chat
@@ -51,6 +82,27 @@ server.on_room_info = function(info) {
       type: 'request',
     }
 
+    msg = JSON.stringify(msg);
     server.sendMessage(msg, lowestId);
   }
+}
+
+// When new user connected we want to know the username of that id and print it in screen
+// so first we will say hello to the new user and wait the response containing the username
+server.on_user_connected = function (user_id) {
+  let msg = {
+    type: 'hello',
+    username: my_username,
+  }
+
+  msg = JSON.stringify(msg);
+  server.sendMessage(msg, user_id);
+}
+
+// When user disconnects we want to notify the other ones that this user left the chat
+server.on_user_disconnected = function (user_id) {
+  let username = userDict[user_id];
+  username = username.fontcolor(getColorById(user_id));
+  let notification = username.bold() + ' has left the room.';
+  appendNotification(notification);
 }
