@@ -74,6 +74,10 @@ html {
   border-top-right-radius: 10px;
   padding: 10px;
 }
+.users-connected {
+  color: rgb(0, 0, 0);
+  float: right;
+}
 
 .message-list-container {
   background: rgb(2,0,36);

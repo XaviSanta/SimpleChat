@@ -83,6 +83,9 @@ server.on_ready = function(id) {
 
 // Get the lowestId in the room and request for the log of messages
 server.on_room_info = function(info) {
+  usersConnected = info.clients.length;
+  $("#usersConnected").text(usersConnected);
+  
   let lowestId = Math.min.apply(Math, info.clients);
   if(lowestId != my_id) {
     let msg = {
@@ -95,11 +98,15 @@ server.on_room_info = function(info) {
   else {
     appendNotification(setNotification(my_id, 'joined'));
   }
+
 }
 
 // When new user connected we want to know the username of that id and print it in screen
 // so first we will say hello to the new user and wait the response containing the username
 server.on_user_connected = function (user_id) {
+  usersConnected++;
+  $("#usersConnected").text(usersConnected);
+
   let msg = {
     type: 'hello',
     username: my_username,
@@ -107,10 +114,14 @@ server.on_user_connected = function (user_id) {
 
   msg = JSON.stringify(msg);
   server.sendMessage(msg, user_id);
+
 }
 
 // When user disconnects we want to notify the other ones that this user left the chat
 server.on_user_disconnected = function (user_id) {
+  usersConnected--;
+  $("#usersConnected").text(usersConnected);
+
   let n = setNotification(user_id, 'left');
   appendNotification(n);
 }

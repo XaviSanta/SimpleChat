@@ -2,6 +2,7 @@ var messageList = [];
 var userDict = new Array();
 var my_id;
 var my_username;
+var usersConnected;
 
 // Send Login
 var usernameInput = document.getElementById('username-input');
@@ -21,13 +22,11 @@ roomInput.addEventListener('keypress', function(e) {
 function sendLogin() {
   let username = document.getElementById('username-input').value; 
   let roomName = document.getElementById('room-input').value;
+  $("#roomName").text(roomName);
+
   if(isValidLogin(username, roomName)){
     my_username = username;
     server.connect(`${config.serverName}:${config.portNumber}`, `${config.prefix}${roomName}`);
-    
-    // Set roomName
-    let chatTitle = document.getElementById('chat-title');
-    chatTitle.innerHTML = 'Room: ' + roomName.bold();
     
     // Clear chat when changing rooms 
     removeChilds('container-messages'); 
